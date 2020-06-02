@@ -18,7 +18,9 @@ export async function campaigns(client, org) {
   const query = `query Org($org: String!) {
     org(name: $org) {
       campaigns {
-        id, title, name, stats {
+        id, title, name,
+        org { title },
+        stats {
           supporterCount, actionCount { actionType, count }
         }
       }
@@ -58,6 +60,11 @@ export async function streamSignatures(client, org, campaignId, cb) {
   return
 }
 
+module.exports = {
+  client,
+  campaigns,
+  streamSignatures
+}
 
 /*
 query Li {
