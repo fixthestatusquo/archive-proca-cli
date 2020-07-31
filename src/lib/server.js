@@ -40,6 +40,37 @@ async function graphQL (operation, query, options) {
   return data;
 }
 
+async function getWidgetConfig(actionPage) {
+  const query = 
+`query getActionPage($id:ID!) {
+  actionPage(id: $id) {
+    config,id,locale,org {
+      title
+    },url,campaign {
+      id,name,title
+    }
+  }
+}`;
+  const data = await graphQL ("getActionPage",query,{variables:{ id: Number(actionPage) }});
+// if (!data) return null;
+ const defaultConfig =  {
+  "lang":"EN",
+  "filename":"page-"+actionPage,
+  "organisation":"Organisation name",
+  "journey":["petition","share"],
+  "components": {},
+  "locales":{},
+  };
+
+ let r ={id:actionPage,
+   lang:data.actionPage.locale.toUpperCase(),
+   organisation:data.actionPage.org.title.toLowerCase()};//TODO: fetch org.name once implemented
+ //let config= (...defaultConfig,...r,...(data.config));
+ let config= Object.assign(defaultConfig,r,JSON.parse(data.actionPage.config));
+ return config;
+}
+
+
 async function getCount(actionPage) {
   var query = 
 `query getCount($actionPage: ID!)
@@ -120,5 +151,6 @@ mutation push($action: SignatureExtraInput,
 module.exports = {
   addSignature:addSignature,
   getSignature:getSignature,
-  getCount:getCount
+  getCount:getCount,
+  getWidgetConfig: getWidgetConfig
 };

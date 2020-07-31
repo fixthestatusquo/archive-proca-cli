@@ -2,6 +2,7 @@ import yargs from "yargs";
 // import config from './config/get'
 import config from "./config";
 import { campaigns, client, streamSignatures } from "./api";
+import { getWidgetConfig } from "./lib/server.js";
 import { decryptSignatures } from "./crypto";
 import { testQueue, syncQueue, addBackoff } from "./queue";
 // import {getCount,getSignature} from './lib/server.js'
@@ -141,6 +142,25 @@ export default function cli() {
     .command("token", "print basic auth token", y => y, showToken)
     .command("campaigns", "List campaigns for org", y => y, listCampaigns)
     .command(
+      "config",
+      "get the configuration of a widget/actionPage",
+      yargs => {
+        return yargs.option("w", {
+          alias: "actionPageId",
+          type: "integer",
+          describe: "actionPage id"
+        })
+        .option("f",{
+          alias: "filename",
+          type: "string",
+          describe: "json file to save in the config"
+        })
+        .demandOption(["w"], "Please provide the actionPageId");
+      },
+      async (argv) => {console.log(await getWidgetConfig(argv.actionPageId));}
+
+    )
+    .command(
       "csv",
       "Downloads CSV of supporters",
       yargs => {
@@ -148,8 +168,8 @@ export default function cli() {
           alias: "campaignId",
           type: "integer",
           describe: "campaign id"
-        });
-        demandOption(["c"], "Please provide the campaignId");
+        })
+        .demandOption(["c"], "Please provide the campaignId");
       },
       getSupporters
     )
