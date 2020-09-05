@@ -157,7 +157,7 @@ export default function cli() {
         })
         .demandOption(["w"], "Please provide the actionPageId");
       },
-      async (argv) => {console.log(await getWidgetConfig(argv.actionPageId));}
+      async (argv) => {console.log(JSON.stringify(await getWidgetConfig(argv.actionPageId),null,2));}
 
     )
     .command(
@@ -187,7 +187,8 @@ export default function cli() {
             alias: "run",
             type: "string",
             describe: "JS file exporting syncAction(action, config) method"
-          });
+          })
+        .demandOption(["c"], "Please provide the campaignId");
       },
       getSupporters
     )

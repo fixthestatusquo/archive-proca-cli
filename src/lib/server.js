@@ -62,7 +62,7 @@ async function getWidgetConfig(actionPage) {
   "locales":{},
   };
 
- let r ={id:actionPage,
+ let r ={actionPage:actionPage,
    lang:data.actionPage.locale.toUpperCase(),
    organisation:data.actionPage.org.title.toLowerCase()};//TODO: fetch org.name once implemented
  //let config= (...defaultConfig,...r,...(data.config));
