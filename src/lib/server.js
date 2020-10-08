@@ -58,7 +58,7 @@ async function getWidgetConfig(actionPage) {
   "filename":"page-"+actionPage,
   "organisation":"Organisation name",
   "journey":["petition","share"],
-  "components": {},
+  "component": {},
   "locales":{},
   };
 
