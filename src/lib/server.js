@@ -46,7 +46,7 @@ async function getWidgetConfig(actionPage) {
   actionPage(id: $id) {
     config,id,locale,org {
       title
-    },url,campaign {
+    },name,campaign {
       id,name,title
     }
   }
@@ -55,7 +55,7 @@ async function getWidgetConfig(actionPage) {
 // if (!data) return null;
  const defaultConfig =  {
   "lang":"EN",
-  "filename":"page-"+actionPage,
+  "filename": data.actionPage.name || "page-"+actionPage,
   "organisation":"Organisation name",
   "journey":["petition","share"],
   "component": {},
@@ -63,9 +63,10 @@ async function getWidgetConfig(actionPage) {
   };
 
  let r ={actionPage:actionPage,
-   lang:data.actionPage.locale.toUpperCase(),
+   lang: data.actionPage.locale || "EN",
    organisation:data.actionPage.org.title.toLowerCase()};//TODO: fetch org.name once implemented
  //let config= (...defaultConfig,...r,...(data.config));
+ r.lang=r.lang.toUpperCase();
  let config= Object.assign(defaultConfig,r,JSON.parse(data.actionPage.config));
  return config;
 }
