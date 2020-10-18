@@ -144,9 +144,9 @@ mutation push($action: SignatureExtraInput,
     variables.tracking = data.tracking;
   }
 
- const data = await graphQL ("addSignature",query,{variables:variables});
- if (!data) return null;
- return data;
+ const r = await graphQL ("addSignature",query,{variables:variables});
+ if (!r) return null;
+ return r;
 }
 
 module.exports = {
