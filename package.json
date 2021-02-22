@@ -14,8 +14,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublish": "yarn build",
-    "build": "tsc",
-    "watch": "tsc -w"
+    "build": "npx tsc",
+    "watch": "npx tsc -w"
   },
   "files": [
     "dist",
