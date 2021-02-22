@@ -10,4 +10,5 @@ TOTAL=$( echo $DATA | jq .t.participate)
 CAMPACT=`expr $TOTAL - $PARTNER`
 ID=$(./bin/proca-cli page -P -J --name aktion.campact.de/$1 | jq .actionpage)
 echo "updating $ID with total $CAMPACT"
+echo "proca-cli page:update --id $ID -e $CAMPACT"
 ./bin/proca-cli page:update --id $ID -e $CAMPACT
