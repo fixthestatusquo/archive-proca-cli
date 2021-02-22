@@ -108,21 +108,21 @@ export async function updateActionPage(argv : UpdateActionPageOpts & FormatOpts,
 
   let json = null
 
-  // json
-  if (argv.config) {
+  let actionPage : types.ActionPageInput = {
+    name: argv.name,
+    thankYouTemplateRef: argv.tytpl,
+    extraSupporters: argv.extra
+  }
+
+  if (argv.config) { // json
     if (argv.config[0] == '{') {
       json = argv.config
     } else {
       json = fs.readFileSync(argv.config, 'utf8')
     }
+    actionPage.config= json;
   }
 
-  let actionPage : types.ActionPageInput = {
-    name: argv.name,
-    thankYouTemplateRef: argv.tytpl,
-    extraSupporters: argv.extra,
-    config: json
-  }
 
   if (argv.json) {
     actionPage = fmt.addConfigKeysToAP(actionPage)
