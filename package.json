@@ -3,6 +3,7 @@
   "version": "2.2.3-beta.0",
   "description": "cli[ent] for Proca",
   "main": "dist/index.js",
+  "browser": "dist/browser.js",
   "types": "dist/index.d.ts",
   "sideEffects": false,
   "repository": "git@github.com:TechToThePeople/proca-gw.git",
