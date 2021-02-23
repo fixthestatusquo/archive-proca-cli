@@ -12,4 +12,4 @@ DATA=$(curl -s https://www.umweltinstitut.org/apps/stats/?aktion=${SLUG[1]})
 COUNT=$( echo $DATA | jq '.nettocount')
 ID=$(./bin/proca-cli page -P -J --name $1 | jq .actionpage)
 echo "updating $ID with total $COUNT"
-# ./bin/proca-cli page:update --id $ID -e $COUNT
+./bin/proca-cli page:update --id $ID -e $COUNT
