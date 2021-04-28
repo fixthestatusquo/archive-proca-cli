@@ -1,0 +1,25 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@proca/api"
+    versions:
+    - 0.2.0-beta.11
+    - 0.2.0-beta.8
+    - 0.2.1
+  - dependency-name: csv-stringify
+    versions:
+    - 5.6.1
+  - dependency-name: "@types/yargs"
+    versions:
+    - 15.0.12
+  - dependency-name: graphql
+    versions:
+    - 15.4.0
+  - dependency-name: amqplib
+    versions:
+    - 0.6.0
