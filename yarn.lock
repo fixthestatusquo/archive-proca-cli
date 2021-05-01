@@ -143,10 +143,10 @@
   resolved "https://registry.yarnpkg.com/@types/node-mailjet/-/node-mailjet-3.3.4.tgz#2a62f71953a211dff03dde79d05c446bfe79221a"
   integrity sha512-KbbbBe5TphBalButPkEC8R6B2uhhj/STHUT5zrK8UhEguB1UybTjqHJ4CoJtTR07CS1lKJKL/yFcCLGdayJwLA==
 
-"@types/node@*", "@types/node@^14.14.7":
-  version "14.14.31"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.31.tgz#72286bd33d137aa0d152d47ec7c1762563d34055"
-  integrity sha512-vFHy/ezP5qI0rFgJ7aQnjDXwAMrG0KqqIH7tQG5PPv3BWBayOPIQNBjVc/P6hhdZfMx51REc6tfDNXHUio893g==
+"@types/node@*", "@types/node@^15.0.1":
+  version "15.0.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-15.0.1.tgz#ef34dea0881028d11398be5bf4e856743e3dc35a"
+  integrity sha512-TMkXt0Ck1y0KKsGr9gJtWGjttxlZnnvDtphxUOSd0bfaR6Q1jle+sPvrzNR1urqYTWMinoKvjKfXUGsumaO1PA==
 
 "@types/through@*":
   version "0.0.30"
